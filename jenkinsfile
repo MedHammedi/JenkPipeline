@@ -1,11 +1,12 @@
 pipeline {
 agent any
 stages{
-stage('clone and clean repo'){
+stage('clone repo'){
 steps {
 bat "git clone https://github.com/MedHammedi/JenkPipeline"
 } }
-stage('Test'){
+stage('Build and Test'){
+cleanWs()
 steps{ bat "mvn install -f JenkPipeline"
 }}
 stage('Deploy'){
