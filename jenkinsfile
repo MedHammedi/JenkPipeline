@@ -15,5 +15,4 @@ bat "mvn package -f JenkPipeline"
 bat "mvn deploy -f JenkPipeline"
 bat "mvn sonar:sonar -f JenkPipeline"
 } }
-
 }}
