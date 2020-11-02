@@ -6,7 +6,7 @@ steps {
 cleanWs()
 bat "git clone https://github.com/MedHammedi/JenkPipeline"
 } }
-stage('Build and Test'){
+stage('Test'){
 steps{ bat "mvn install -f JenkPipeline"
 }}
 stage('Deploy'){
@@ -14,5 +14,4 @@ steps {
 bat "mvn package -f JenkPipeline"
 bat "mvn deploy -f JenkPipeline"
 bat "mvn sonar:sonar -f JenkPipeline"
-} }
-}}
+} }}}
