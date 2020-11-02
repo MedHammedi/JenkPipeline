@@ -3,7 +3,6 @@ agent any
 stages{
 stage('clone repo'){
 steps {
-cleanWs()
 bat "git clone https://github.com/MedHammedi/JenkPipeline"
 } }
 stage('Build and Test'){
