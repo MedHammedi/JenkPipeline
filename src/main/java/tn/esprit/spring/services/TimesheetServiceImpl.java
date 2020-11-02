@@ -44,7 +44,7 @@ public class TimesheetServiceImpl implements ITimesheetService {
     
 	public void affecterMissionADepartement(int missionId, int depId) {
 		l.info("In AffecterMissionDeptments");
-		Mission mission = missionRepository.findById(missionId).get();
+		Mission mission = missionepository.findById(missionId).get();
 		Departement dep = deptRepoistory.findById(depId).get();
 		mission.setDepartement(dep);
 		missionRepository.save(mission);
