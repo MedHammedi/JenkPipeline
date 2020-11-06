@@ -16,6 +16,7 @@ bat "mvn package -f JenkPipeline"
 bat "mvn deploy -f JenkPipeline"
 bat "mvn sonar:sonar -f JenkPipeline"
 } }
+stage('MailTest'){
 emailext body: ' Build Test mail', subject: 'Build Notification', to: 'hammedim7@gmail.com'
-
+}
 }}
