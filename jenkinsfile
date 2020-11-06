@@ -17,9 +17,15 @@ bat "mvn deploy -f JenkPipeline"
 bat "mvn sonar:sonar -f JenkPipeline"
 } }
 
- stage('Email'){
-        emailext body: '''${SCRIPT, template="build-report.groovy"}''',
-                subject: "[Jenkins] REPORT",
-                to: "hammedim7@gmail.com"
-    }
+stage('Send email') {
+    def mailRecipients = "hammedim7@gmail.com"
+    
+
+    emailext body: '''${SCRIPT, template="groovy-html.template"}''',
+        mimeType: 'text/html',
+        subject: "[Jenkins]}",
+        to: "${mailRecipients}",
+        replyTo: "${mailRecipients}",
+        recipientProviders: [[$class: 'CulpritsRecipientProvider']]
+}
 }}
