@@ -23,10 +23,12 @@ stages {
             }
         }
     }
+    stages {
+    stage('Send Mail') {
  post {
         always {
             emailext body: 'mail sent on build', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Build notification'
         }
     }
-
+}}
 }}
