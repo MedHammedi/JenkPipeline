@@ -12,8 +12,13 @@ bat "mvn install -f JenkPipeline"
 }}
 stage('MailTest'){
 steps {
-emailext body: ' Build Test mail', recipientProviders: [buildUser()], 
- subject: 'Build Notification', to: 'hammedim7@gmail.com'
+stage("mail") {
+          steps {
+          mail bcc: '', body: '''Hello User the build of your project successed.
+            Jenkins.''', cc: '', from: '', replyTo: '', subject: 'Build succed', to: 'hammedim7@gmail.com'
+          }
+        
+        }
 }}
 stage('Deploy'){
 steps {
