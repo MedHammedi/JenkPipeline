@@ -12,7 +12,11 @@ bat "mvn install -f JenkPipeline"
 }}
 stage('MailTest'){
 steps {
-emailext body: ' Build Test mail', subject: 'Build Notification', to: 'hammedim7@gmail.com'
+post {
+        always {
+            emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
+        }
+    }
 }}
 stage('Deploy'){
 steps {
