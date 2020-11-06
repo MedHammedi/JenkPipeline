@@ -17,9 +17,9 @@ bat "mvn deploy -f JenkPipeline"
 bat "mvn sonar:sonar -f JenkPipeline"
 } }
 
-post {
-        always {
-            emailext body: 'mail sent on build', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Build notification'
-        }
+ stage('Email'){
+        emailext body: '''${SCRIPT, template="build-report.groovy"}''',
+                subject: "[Jenkins] REPORT",
+                to: "hammedim7@gmail.com"
     }
 }}
