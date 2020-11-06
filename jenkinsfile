@@ -17,12 +17,9 @@ bat "mvn deploy -f JenkPipeline"
 bat "mvn sonar:sonar -f JenkPipeline"
 } }
 
-stages {
-    stage('Send Mail') {
- post {
+post {
         always {
             emailext body: 'mail sent on build', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Build notification'
         }
     }
-}}
 }}
