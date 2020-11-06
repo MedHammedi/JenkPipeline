@@ -16,14 +16,8 @@ bat "mvn package -f JenkPipeline"
 bat "mvn deploy -f JenkPipeline"
 bat "mvn sonar:sonar -f JenkPipeline"
 } }
+
 stages {
-        stage('Send Mail') {
-            steps {
-                echo "Ok"
-            }
-        }
-    }
-    stages {
     stage('Send Mail') {
  post {
         always {
