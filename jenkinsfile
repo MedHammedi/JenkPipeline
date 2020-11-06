@@ -10,8 +10,7 @@ stage('Build and Test'){
 steps{ 
 bat "mvn install -f JenkPipeline"
 }}
-stage('MailTest'){
-steps {
+
 stage("mail") {
           steps {
           mail bcc: '', body: '''Hello User the build of your project successed.
@@ -19,7 +18,7 @@ stage("mail") {
           }
         
         }
-}}
+
 stage('Deploy'){
 steps {
 bat "mvn package -f JenkPipeline"
