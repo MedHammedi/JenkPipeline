@@ -18,14 +18,8 @@ bat "mvn sonar:sonar -f JenkPipeline"
 } }
 
 stage('Send email') {
-    def mailRecipients = "hammedim7@gmail.com"
-    
-
-    emailext body: '''${SCRIPT, template="groovy-html.template"}''',
-        mimeType: 'text/html',
-        subject: "[Jenkins]}",
-        to: "${mailRecipients}",
-        replyTo: "${mailRecipients}",
-        recipientProviders: [[$class: 'CulpritsRecipientProvider']]
+    emailext body: 'Test Message',
+    subject: 'Test Subject',
+    to: 'hammedim7@gmail.com'
 }
 }}
