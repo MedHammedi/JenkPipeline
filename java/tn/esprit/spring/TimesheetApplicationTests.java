@@ -8,7 +8,6 @@ class TimesheetApplicationTests {
 
 	@Test
 	void contextLoads() {
-		
 	}
 
 }

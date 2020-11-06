@@ -15,4 +15,12 @@ steps {
 bat "mvn package -f JenkPipeline"
 bat "mvn deploy -f JenkPipeline"
 bat "mvn sonar:sonar -f JenkPipeline"
-} }}}
+} }
+
+ post {
+        always {
+            emailext body: 'mail sent on build', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Build notification'
+        }
+    }
+
+}}
